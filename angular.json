@@ -8,10 +8,16 @@
   "projects": {
     "bazissoft-test": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true,
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -22,9 +28,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
               }
             ],
             "styles": [
+              "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "src/styles.css"
             ]
           },
