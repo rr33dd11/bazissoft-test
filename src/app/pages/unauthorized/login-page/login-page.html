@@ -1,0 +1,30 @@
+<div>
+  <form [formGroup]="loginForm">
+    <div>
+      <label for="userName">Имя пользователя: </label>
+      <input id="userName" type="text" formControlName="username"/>
+
+      @if (loginForm.controls.username.touched) {
+        @for (error of loginForm.controls.username.errors | keyvalue; track error.key) {
+          @if ($first) {
+            <span>{{ getErrorMessage(error.key, "username") }}</span>
+          }
+        }
+      }
+    </div>
+
+    <div>
+      <label for="password">Пароль: </label>
+      <input id="password" type="password" formControlName="password"/>
+
+      @if (loginForm.controls.password.touched) {
+        @for (error of loginForm.controls.password.errors | keyvalue; track error.key) {
+          @if ($first) {
+            <span>{{ getErrorMessage(error.key, "password") }}</span>
+          }
+        }
+      }
+    </div>
+    <button (click)="onSubmit()">click</button>
+  </form>
+</div>
