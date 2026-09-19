@@ -13,7 +13,7 @@ export const ROUTE_PATHS = {
 
 export const routes: Routes = [
   {
-    path: 'login',
+    path: ROUTE_PATHS.loginPage,
     component: LoginPage,
   },
   {
