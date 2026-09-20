@@ -3,6 +3,7 @@ import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {TuiTabs} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 import {ROUTE_PATHS} from '../../../app.routes';
+import {navTabNames} from '../../consts/texts';
 
 @Component({
   imports: [TuiTabs, TuiHeader, RouterLink, RouterLinkActive],
@@ -14,4 +15,5 @@ export class Header {
   protected readonly router = inject(Router);
   protected readonly paths = ROUTE_PATHS;
 
+  protected readonly navTabNames = navTabNames;
 }

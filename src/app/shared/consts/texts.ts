@@ -8,3 +8,8 @@ export const validationErrorMessages = {
 };
 
 export const incorrectPasswordError = "Неверный пароль\nпопробуйте еще раз"
+
+export const navTabNames = {
+  dashboard: 'Каталог товаров',
+  history: 'История покупок',
+}

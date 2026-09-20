@@ -1,1 +1,52 @@
-<p>dashboard-page works!</p>
+<table tuiTable>
+  <thead>
+  <tr>
+    <th tuiTh>ID</th>
+    <th tuiTh>Название</th>
+    <th tuiTh>Цена</th>
+    <th tuiTh>НДС</th>
+    <th tuiTh>Действия</th>
+  </tr>
+  </thead>
+  <tbody tuiTbody>
+    @for (product of products; track product.id) {
+      <tr>
+        <td tuiTd>{{ product.id }}</td>
+        <td tuiTd>{{ product.name }}</td>
+        <td tuiTd>{{ product.price }}</td>
+        <td tuiTd>{{ product.vat }}</td>
+        <td tuiTd>
+          <button
+            appearance="flat"
+            iconStart="@tui.ellipsis-vertical"
+            tuiIconButton
+            type="button"
+            [tuiAppearanceState]="openedProductId === product.id ? 'hover' : null"
+            [tuiDropdown]="content"
+            [tuiDropdownOpen]="openedProductId === product.id"
+            (tuiDropdownOpenChange)="
+          openedProductId = $event ? product.id : null
+        "
+          >
+            Open
+          </button>
+
+          <ng-template #content>
+            <tui-data-list
+              tuiDataListDropdownManager
+              [size]="size"
+            >
+              <button tuiOption type="button">
+                Редактировать
+              </button>
+
+              <button tuiOption type="button">
+                Удалить
+              </button>
+            </tui-data-list>
+          </ng-template>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

@@ -1,1 +1,23 @@
-<p>history-page works!</p>
+<table tuiTable>
+  <thead>
+  <tr>
+    <th tuiTh>ID</th>
+    <th tuiTh>Название товара</th>
+    <th tuiTh>Имя покупателя</th>
+    <th tuiTh>Сумма покупки</th>
+    <th tuiTh>Дата операции</th>
+  </tr>
+  </thead>
+  <tbody tuiTbody>
+    @for (purchase of purchases; track purchase) {
+      <tr>
+        <td tuiTd>{{ purchase.id }}</td>
+        <td tuiTd>{{ purchase.productName }}</td>
+        <td tuiTd>{{ purchase.username }}</td>
+        <td tuiTd>{{ purchase.amount }}</td>
+        <td tuiTd>{{ purchase.date }}</td>
+
+      </tr>
+    }
+  </tbody>
+</table>
