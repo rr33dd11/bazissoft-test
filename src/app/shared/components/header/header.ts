@@ -1,12 +1,11 @@
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {TuiTabs} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
 import {ROUTE_PATHS} from '../../../app.routes';
-import {navTabNames} from '../../consts/texts';
+import {navTabNames} from '@shared/consts/texts';
 
 @Component({
-  imports: [TuiTabs, TuiHeader, RouterLink, RouterLinkActive],
+  imports: [TuiTabs, RouterLink, RouterLinkActive],
   selector: 'app-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',

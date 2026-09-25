@@ -4,3 +4,9 @@ export type Product = {
   price: number;
   vat: number;
 }
+
+export type ProductValue = {
+  name: string;
+  price: number;
+  vat: number;
+}

@@ -3,7 +3,13 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": []
+    "ignoreDeprecations": "6.0",
+    "types": [],
+    "baseUrl": "src",
+    "paths": {
+      "@core/*": ["app/core/*"],
+      "@shared/*": ["app/shared/*"]
+    }
   },
   "include": [
     "src/**/*.ts"

@@ -1,15 +1,25 @@
-<table tuiTable>
+<button
+  id="createButton"
+  tuiButton
+  size="s"
+  type="button"
+  (click)="addProduct()"
+>
+  {{productPage.actions.add}}
+</button>
+
+<table tuiTable size="s">
   <thead>
   <tr>
-    <th tuiTh>ID</th>
-    <th tuiTh>Название</th>
-    <th tuiTh>Цена</th>
-    <th tuiTh>НДС</th>
-    <th tuiTh>Действия</th>
+    <th tuiTh>{{ productTableColumns.id }}</th>
+    <th tuiTh>{{ productTableColumns.name }}</th>
+    <th tuiTh>{{ productTableColumns.price }}</th>
+    <th tuiTh>{{ productTableColumns.vat }}</th>
+    <th tuiTh>{{ productTableColumns.actions }}</th>
   </tr>
   </thead>
   <tbody tuiTbody>
-    @for (product of products; track product.id) {
+    @for (product of products(); track product.id) {
       <tr>
         <td tuiTd>{{ product.id }}</td>
         <td tuiTd>{{ product.name }}</td>
@@ -27,21 +37,19 @@
             (tuiDropdownOpenChange)="
           openedProductId = $event ? product.id : null
         "
-          >
-            Open
-          </button>
+          ></button>
 
           <ng-template #content>
             <tui-data-list
               tuiDataListDropdownManager
               [size]="size"
             >
-              <button tuiOption type="button">
-                Редактировать
+              <button tuiOption type="button" (click)="editProduct(product)">
+                {{productPage.actions.edit}}
               </button>
 
-              <button tuiOption type="button">
-                Удалить
+              <button tuiOption type="button" (click)="deleteProduct(product.id)">
+                {{productPage.actions.delete}}
               </button>
             </tui-data-list>
           </ng-template>

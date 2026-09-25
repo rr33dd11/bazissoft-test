@@ -1,17 +1,26 @@
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {KeyValuePipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
-import {AuthService} from '../../../core/services/auth.service';
-import {LoginData} from '../../../shared/types/authTypes';
+import {AuthService} from '@core/services/authService';
+import {LoginData} from '@shared/types/authTypes';
 import {Router} from '@angular/router';
 import {ROUTE_PATHS} from '../../../app.routes';
-import {TuiNotification} from '@taiga-ui/core';
+import {TuiButton, TuiError, TuiInput, TuiLabel, TuiNotification, TuiTextfield} from '@taiga-ui/core';
 import {TuiToast, TuiToastService} from '@taiga-ui/kit';
-import {passwordMinLength} from '../../../shared/consts/nums';
-import {incorrectPasswordError, validationErrorMessages} from '../../../shared/consts/texts';
+import {passwordMinLength} from '@shared/consts/nums';
+import {
+  buttonNames,
+  loginPage,
+  validationErrorMessages
+} from '@shared/consts/texts';
+import {StorageService} from '@core/services/storageService';
+import {STORAGE_KEYS} from '@shared/consts/storage';
+import {TuiForm} from '@taiga-ui/layout';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {WrongPasswordToast} from './components/wrong-password-toast/wrong-password-toast';
 
 @Component({
-  imports: [ReactiveFormsModule, KeyValuePipe, TuiNotification, TuiToast],
+  imports: [TuiError, TuiForm, ReactiveFormsModule, KeyValuePipe, TuiNotification, TuiToast, TuiTextfield, TuiLabel, TuiInput, TuiButton],
   selector: 'app-login-page',
   styleUrl: './login-page.scss',
   templateUrl: './login-page.html',
@@ -19,8 +28,11 @@ import {incorrectPasswordError, validationErrorMessages} from '../../../shared/c
 
 export class LoginPage {
   protected readonly authService = inject(AuthService);
+  protected readonly storageService = inject(StorageService);
   protected readonly router = inject(Router);
   protected readonly toast = inject(TuiToastService)
+  protected readonly labels = loginPage.loginLabels
+  protected readonly buttonName = buttonNames.login
 
   loginForm = new FormGroup({
     "username": new FormControl("", [Validators.required]),
@@ -51,12 +63,14 @@ export class LoginPage {
   }
 
   private onSubmitSuccess () {
-    localStorage.setItem("isAuth", "true");
+    this.storageService.set<boolean>(STORAGE_KEYS.isAuth, true)
     this.router.navigate([ROUTE_PATHS.dashboardPage])
   }
 
   private onSubmitFailure () {
-    this.toast.open(incorrectPasswordError, {autoClose: 2000, inline: "end", block: "end", data: ""}).subscribe()
+    this.toast.open(new PolymorpheusComponent(WrongPasswordToast), {
+      autoClose: 2000
+    }).subscribe()
   }
 
   getErrorMessage(error: string, formControl: string): string {

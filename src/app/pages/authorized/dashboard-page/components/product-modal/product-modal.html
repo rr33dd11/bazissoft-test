@@ -1,0 +1,57 @@
+<form
+  tuiForm="m"
+  [formGroup]="form"
+  (ngSubmit)="save()"
+
+>
+  <tui-textfield>
+    <label tuiLabel>{{ productLabels.name }}</label>
+    <input tuiInput
+           formControlName="name"
+    />
+  </tui-textfield>
+  @if (form.controls.name.touched && form.controls.name.hasError('required')) {
+    <tui-error [error]="validationErrorMessages.required"/>
+  }
+
+  <tui-textfield>
+    <label tuiLabel>{{ productLabels.price }}</label>
+    <input
+      tuiInput
+      type="number"
+      formControlName="price"
+    />
+  </tui-textfield>
+  @if (form.controls.price.touched) {
+    @if (form.controls.price.hasError('required')) {
+      <tui-error [error]="validationErrorMessages.required"/>
+    } @else if (form.controls.price.hasError('min')) {
+      <tui-error [error]="validationErrorMessages.positive"/>
+    }
+  }
+
+  <tui-textfield>
+    <label tuiLabel>{{ productLabels.vat }}</label>
+    <input
+      tuiInput
+      type="number"
+      formControlName="vat"
+    />
+  </tui-textfield>
+  @if (form.controls.vat.touched) {
+    @if (form.controls.vat.hasError('required')) {
+      <tui-error [error]="validationErrorMessages.required"/>
+    } @else if (form.controls.vat.hasError('min')) {
+      <tui-error [error]="validationErrorMessages.positive"/>
+    }
+  }
+  <footer>
+  <button
+    tuiButton
+    type="submit"
+    appearance="primary"
+  >
+    {{ context.data.buttonText }}
+  </button>
+  </footer>
+</form>
