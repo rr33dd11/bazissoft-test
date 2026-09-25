@@ -1,59 +1,31 @@
-# BazissoftTest
+Frontend-приложение для управления каталогом товаров и просмотра истории покупок.
+Проект выполнен в рамках тестового задания с использованием Angular и Taiga UI.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+## Реализовано
 
-## Development server
+### Авторизация
+- форма авторизации;
+- валидация логина и пароля;
+- проверка тестовых данных;
+- сохранение состояния авторизации в `localStorage`;
+- защита страниц с помощью `AuthGuard`;
+- уведомление об ошибке авторизации.
 
-To start a local development server, run:
+### Каталог товаров
+- отображение списка товаров в таблице;
+- добавление товара;
+- редактирование товара;
+- удаление товара с подтверждением;
+- валидация формы товара;
+- сохранение изменений в `localStorage`.
 
-```bash
-ng serve
-```
+### История покупок
+- отображение истории покупок;
+- тестовые данные;
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Работа с данными
+Для работы с локальными данными реализованы отдельные сервисы:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- AuthService — авторизация;
+- ProductService — работа с товарами;
+- StorageService — работа с localStorage.
