@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {LoginData, LoginResponse} from '@shared/types/authTypes';
 import {correctLoginData} from '@shared/data/authData';
-import {loginPage} from '@shared/consts/texts';
+import {loginPageTexts} from '@shared/consts/texts';
 import {StorageService} from './storageService';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AuthService {
     if (this.validateData(loginData)) {
       return {code: 200}
     }
-    return {code: 400, text: loginPage.incorrectPasswordError}
+    return {code: 400, text: loginPageTexts.incorrectPasswordError}
   }
 
   private validateData(loginData: LoginData): boolean {

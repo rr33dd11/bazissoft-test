@@ -1,7 +1,7 @@
 import {passwordMinLength} from './nums';
 
 
-export const loginPage = {
+export const loginPageTexts = {
   loginLabels: {
     username: "Имя пользователя",
     password: "Пароль"
@@ -9,7 +9,7 @@ export const loginPage = {
   incorrectPasswordError: "Неверный пароль\nпопробуйте еще раз",
 }
 
-export const productPage = {
+export const dashboardPageTexts = {
   productTableColumns: {
     id: "ID",
     name: "Название",
@@ -37,7 +37,7 @@ export const productPage = {
   }
 }
 
-export const purchasePage = {
+export const purchasePageTexts= {
   purchaseTableColumns: {
     id: "ID",
     productName: "Название товара",

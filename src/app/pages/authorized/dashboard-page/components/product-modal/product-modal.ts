@@ -2,12 +2,13 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {TuiButton, TuiDialogContext, TuiError, TuiInput, TuiLabel, TuiTextfield} from '@taiga-ui/core';
-import {ProductModalData} from './productModalData';
+import {ProductModalDataType} from './productModalData';
 import {ProductValue} from '@shared/types/product';
-import {productPage, validationErrorMessages} from '@shared/consts/texts';
+import {dashboardPageTexts, validationErrorMessages} from '@shared/consts/texts';
 import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
+  standalone: true,
   imports: [ReactiveFormsModule,
     TuiTextfield,
     TuiLabel, TuiInput, TuiButton, TuiError, TuiForm],
@@ -18,9 +19,9 @@ import {TuiForm} from '@taiga-ui/layout';
 export class ProductModal {
   protected readonly context = inject(
     POLYMORPHEUS_CONTEXT,
-  ) as TuiDialogContext<void, ProductModalData>;
+  ) as TuiDialogContext<void, ProductModalDataType>;
 
-  protected readonly productLabels = productPage.productLabels
+  protected readonly productLabels = dashboardPageTexts.productLabels
 
   protected readonly form = new FormGroup({
     name: new FormControl(this.context.data.productData?.name ?? "", {

@@ -5,6 +5,7 @@ import {ROUTE_PATHS} from '../../../app.routes';
 import {navTabNames} from '@shared/consts/texts';
 
 @Component({
+  standalone: true,
   imports: [TuiTabs, RouterLink, RouterLinkActive],
   selector: 'app-header',
   styleUrl: './header.scss',

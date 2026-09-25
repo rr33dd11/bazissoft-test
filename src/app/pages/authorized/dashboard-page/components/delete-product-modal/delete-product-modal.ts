@@ -2,9 +2,10 @@ import {Component, inject} from '@angular/core';
 import {ProductService} from '@core/services/productService';
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {TuiButton, TuiDialogContext} from '@taiga-ui/core';
-import {buttonNames, productPage} from '@shared/consts/texts';
+import {buttonNames, dashboardPageTexts} from '@shared/consts/texts';
 
 @Component({
+  standalone: true,
   imports: [TuiButton],
   selector: 'app-delete-product-modal',
   styleUrl: './delete-product-modal.scss',
@@ -23,6 +24,5 @@ export class DeleteProductModal {
     this.context.completeWith()
   }
 
-
-  protected readonly productPage = productPage;
+  protected readonly confirmText = dashboardPageTexts.deleteModal.confirmText;
 }

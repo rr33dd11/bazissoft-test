@@ -10,7 +10,7 @@ import {TuiToast, TuiToastService} from '@taiga-ui/kit';
 import {passwordMinLength} from '@shared/consts/nums';
 import {
   buttonNames,
-  loginPage,
+  loginPageTexts,
   validationErrorMessages
 } from '@shared/consts/texts';
 import {StorageService} from '@core/services/storageService';
@@ -20,6 +20,7 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {WrongPasswordToast} from './components/wrong-password-toast/wrong-password-toast';
 
 @Component({
+  standalone: true,
   imports: [TuiError, TuiForm, ReactiveFormsModule, KeyValuePipe, TuiNotification, TuiToast, TuiTextfield, TuiLabel, TuiInput, TuiButton],
   selector: 'app-login-page',
   styleUrl: './login-page.scss',
@@ -31,7 +32,7 @@ export class LoginPage {
   protected readonly storageService = inject(StorageService);
   protected readonly router = inject(Router);
   protected readonly toast = inject(TuiToastService)
-  protected readonly labels = loginPage.loginLabels
+  protected readonly labels = loginPageTexts.loginLabels
   protected readonly buttonName = buttonNames.login
 
   loginForm = new FormGroup({

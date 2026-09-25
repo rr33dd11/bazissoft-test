@@ -1,6 +1,6 @@
 import {ProductValue} from '@shared/types/product';
 
-export type ProductModalData = {
+export type ProductModalDataType = {
   productData: ProductValue | null;
   onSave: (value: ProductValue) => void;
   buttonText: string;

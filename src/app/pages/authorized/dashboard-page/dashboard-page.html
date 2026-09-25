@@ -5,7 +5,7 @@
   type="button"
   (click)="addProduct()"
 >
-  {{productPage.actions.add}}
+  {{actions.add}}
 </button>
 
 <table tuiTable size="s">
@@ -45,11 +45,11 @@
               [size]="size"
             >
               <button tuiOption type="button" (click)="editProduct(product)">
-                {{productPage.actions.edit}}
+                {{actions.edit}}
               </button>
 
               <button tuiOption type="button" (click)="deleteProduct(product.id)">
-                {{productPage.actions.delete}}
+                {{actions.delete}}
               </button>
             </tui-data-list>
           </ng-template>
